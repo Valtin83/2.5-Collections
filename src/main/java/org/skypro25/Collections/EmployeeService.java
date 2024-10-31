@@ -11,15 +11,22 @@ public class EmployeeService {
 
     // Создаем список сотрудников
     List<Employee> employees = new ArrayList<>(List.of(
-            new Employee("Иван","Иванов"),
+            new Employee("Иван", "Иванов"),
             new Employee("Петр", "Петров"),
             new Employee("Сидор", "Сидоров"),
             new Employee("Николай", "Кузнецов"),
             new Employee("Семен", "Семенов")
     ));
+
+    private static final int MAX_EMPLOYEES = 10;
+
     @GetMapping("/add")
     public Employee addEmployee(String firstName, String lastName) {
         Employee employee = new Employee(firstName, lastName);
+
+        if (employees.size() >= MAX_EMPLOYEES) {
+            throw new EmployeeStorageIsFullException("Превышен лимит количества сотрудников в фирме.");
+        }
 
         if (employees.contains(employee)) {
             throw new EmployeeAlreadyAddedException("Сотрудник уже добавлен.");
