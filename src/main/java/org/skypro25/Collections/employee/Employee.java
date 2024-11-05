@@ -6,6 +6,7 @@ public class Employee {
     private String firstName; // Имя
     private String lastName; // Фамилия
 
+    // Конструктор
     public Employee(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
