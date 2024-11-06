@@ -20,6 +20,10 @@ public class Employee {
         return lastName;
     }
 
+    public String getKeyFullName() {
+        return firstName + " " + lastName;
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(firstName, lastName);
